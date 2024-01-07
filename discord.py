@@ -12,7 +12,9 @@ async def login(username, password):
 
 
 async def get_message(user, channel):
-    page = await login("username", "password")
+    return "Last message: Hello!"
 
-    return "Login successful!"
 
+async def send_message(user, channel, message):
+    #TODO: Implement this
+    return "Message sent!"

@@ -10,4 +10,3 @@ def generate_text(text):
     output = generator(text, max_length=100, temperature=0.9)
     return output[0]["generated_text"]
 
-

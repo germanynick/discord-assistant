@@ -8,11 +8,12 @@ async def login(username, password):
 
     time.sleep(3)
 
-    return driver
+    driver.close()
 
 
 async def get_message(user, channel):
-    return "Last message: Hello!"
+    await login(user, "password")
+    return f'Hello {user}!, on channel {channel}'
 
 
 async def send_message(user, channel, message):

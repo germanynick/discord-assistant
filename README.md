@@ -13,13 +13,23 @@ A brief description of the project.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/repository.git
+   git clone https://github.com/germanynick/discord-assistant.git
    ```
 2. Navigate into the project directory:
    ```bash
-   cd repository
+   cd discord-assistant
    ```
-3. Install the required dependencies:
+3. Install virtual environment:
+   ```bash
+   python -m venv .env
+   ```
+4. Activate virtual environment:
+
+   ```bash
+    source .env/bin/activate
+   ```
+
+5. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
@@ -29,5 +39,5 @@ A brief description of the project.
 Run the main script:
 
 ```bash
-python main.py
+gradio main.py
 ```

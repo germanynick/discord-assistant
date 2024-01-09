@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 print(tf.__version__)
-model = tf.keras.models.load_model("models/actor/model.h5")
+model = tf.keras.models.load_model("models/actor/model_v1.h5")
 mapping = pd.read_csv("models/actor/index_to_label_map.csv")
 
 def predict(image):

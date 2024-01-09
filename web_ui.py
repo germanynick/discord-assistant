@@ -11,7 +11,7 @@ def launch(on_submit):
         gr.Image(label="Actor Image")
     ]
 
-    output = gr.Textbox()
+    output = [gr.Textbox(), gr.Image()]
 
     interface = gr.Interface(fn=on_submit, inputs=inputs, outputs=output, title="Discord Chat")
     

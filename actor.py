@@ -12,7 +12,12 @@ def predict(image):
     inputs = np.expand_dims(image, axis=0)
     outputs = model.predict(inputs)
     index = np.argmax(outputs[0])
-    return mapping.iloc[index].loc['Label']
+
+    #EX: Ascetic_Monk/icon_101014_cb1e8dde41.jpg
+    label = mapping.iloc[index].loc['Label']
+
+    name = label.split("/")[0].replace("_", " ")
+    return name
     
 
 

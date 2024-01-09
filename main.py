@@ -1,19 +1,15 @@
 # from assistant import generate_text
 from discord import get_message, send_message
 from web_ui import launch
-from actor import predict
+from actor import predict_from_directory
 
-async def on_submit(username, channel, actor_image):
-    if (actor_image is not None):
-        return predict(actor_image)
-        
-    return username
-    # message = await get_message(username, channel)
-    # generated_message = generate_text(message)
+async def on_submit(directory, channel, actor_image):
+    if directory is not None:
+        names = predict_from_directory(directory)
 
-    # send_message(username, channel, generated_message)
-    
-    # return generated_message
+        return names
+
+    return "Please input a directory"
 
 if __name__ == "__main__":
     launch(on_submit)

@@ -3,26 +3,33 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from PIL import Image
+import os
 
 print(tf.__version__)
 model = tf.keras.models.load_model("models/actor/model_v5.h5")
 mapping = pd.read_csv("models/actor/index_to_label_map.csv")
 
-def predict(image):
-    image = tf.image.resize(image, (180, 180))
-    inputs = np.expand_dims(image, axis=0)
-    outputs = model.predict(inputs)
-    index = np.argmax(outputs[0])
 
-    #EX: Ascetic_Monk/icon_101014_cb1e8dde41.jpg
-    label = mapping.iloc[index].loc['Label']
+def predict_from_directory(directory):
 
-    #Load full image
-    full_image = Image.open("images/" + label)
-    full_image = full_image.resize((180, 180))
-
-    name = label.split("/")[0].replace("_", " ")
-    return name, full_image
+    images = []
+    for filename in os.listdir(directory):
+        image = Image.open(os.path.join(directory, filename))
+        image = image.convert('RGB')
+        image = image.resize((180, 180))
+        images.append(np.array(image, dtype=np.uint8))
     
+    inputs = np.array(images, dtype=np.uint8)
+    outputs = model.predict(inputs)
+
+    indices= np.argmax(outputs, axis=1)    
+
+    labels = [mapping.iloc[index].loc['Label'] for index in indices]
 
 
+    names = [label.split("/")[0].replace("_", " ") for label in labels]
+    
+    names = list(set(names))
+    names = ", ".join(names)
+    
+    return names, 

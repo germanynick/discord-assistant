@@ -25,7 +25,7 @@ def predict_from_directory(directory):
     names['Role'] = pd.Categorical(names['Role'], ["Tank", "Dame", "Support"])
 
     names = names.sort_values("Role")
-    names = names["Name"].values.tolist()
+    names = list(set(names["Name"].values))
 
     message = ", ".join(names)
     

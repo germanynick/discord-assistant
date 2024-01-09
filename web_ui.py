@@ -6,12 +6,12 @@ import webbrowser
 
 def launch(on_submit):
     inputs = [
-        gr.Textbox(label="Username"),
+        gr.Textbox(label="Directory"),
         gr.Textbox(label="Channel"),
         gr.Image(label="Actor Image")
     ]
 
-    output = [gr.Textbox(), gr.Image()]
+    output = [gr.Textbox()]
 
     interface = gr.Interface(fn=on_submit, inputs=inputs, outputs=output, title="Discord Chat")
     

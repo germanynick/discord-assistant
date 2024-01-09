@@ -8,6 +8,7 @@ def launch(on_submit):
     inputs = [
         gr.Textbox(label="Username"),
         gr.Textbox(label="Channel"),
+        gr.Image(label="Actor Image")
     ]
 
     output = gr.Textbox()

@@ -1,21 +1,18 @@
 
-from selenium import webdriver
 import time
+import websocket as ws
+import requests
 
-async def login(username, password):
-    driver = webdriver.Chrome()
-    driver.get("https://discord.com/login")
+def send_message(message):
+    
+    url = "https://discord.com/api/v9/channels/1193403120986902538/messages" #input channel exp: .../1190017920013713531/...
+    payload = { 
+        "content" : {message} #input content message @username before the content message
+    }
 
-    time.sleep(3)
+    headers = {
+        "Authorization" :"MTA2NDI3MDQyODYzOTYwMDY1MA.GxMMsR.UlMotld5pFexeztkJuVzfd_oaDz9eIX7FTCbFU"
+    }
 
-    driver.close()
-
-
-async def get_message(user, channel):
-    await login(user, "password")
-    return f'Hello {user}!, on channel {channel}'
-
-
-async def send_message(user, channel, message):
-    #TODO: Implement this
-    return "Message sent!"
+    res = requests.post(url, payload, headers=headers)
+    return message

@@ -3,11 +3,11 @@ from discord import send_message
 from web_ui import launch
 from actor import predict_from_directory
 
-def on_submit(directory, channel, actor_image):
+def on_submit(directory, discord_token, actor_image):
     if directory is not None:
-        names = predict_from_directory(directory)
-        send_message(names)
-        return names
+        message = predict_from_directory(directory)
+        send_message(discord_token, message)
+        return message
 
     return "Please input a directory"
 

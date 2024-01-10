@@ -7,7 +7,7 @@ import webbrowser
 def launch(on_submit):
     inputs = [
         gr.Textbox(label="Directory"),
-        gr.Textbox(label="Channel"),
+        gr.Textbox(label="Discord Token"),
         gr.Image(label="Actor Image")
     ]
 
